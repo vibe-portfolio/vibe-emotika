@@ -1,6 +1,6 @@
 import { CornerDownLeft } from "lucide-react"
 import React from "react"
-import { experimental_useFormStatus as useFormStatus } from "react-dom"
+import { useFormStatus } from "react-dom"
 import { Loader } from "../loader"
 
 export const SubmitButton = React.forwardRef<React.ElementRef<"button">>((_, ref) => {

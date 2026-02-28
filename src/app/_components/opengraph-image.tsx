@@ -1,4 +1,4 @@
-import { ImageResponse } from "next/server"
+import { ImageResponse } from "next/og"
 
 const EMOJI_SIZE = 570
 export const size = {

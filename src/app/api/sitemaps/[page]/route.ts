@@ -13,8 +13,9 @@ type SitemapContextProps = z.infer<typeof sitemapContextSchema>
 export const dynamic = "force-dynamic"
 export const revalidate = 0
 
-export async function GET(request: Request, { params }: SitemapContextProps) {
-  const page = params.page
+export async function GET(request: Request, { params }: { params: Promise<{ page: string }> }) {
+  const { page: pageStr } = await params
+  const page = Number(pageStr)
   const emojis = await getEmojis({
     take: SITEMAP_PAGE_SIZE,
     skip: page * SITEMAP_PAGE_SIZE,

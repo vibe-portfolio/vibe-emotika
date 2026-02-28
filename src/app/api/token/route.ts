@@ -6,7 +6,7 @@ import { type NextRequest } from "next/server"
 export const revalidate = 0
 
 export async function GET(request: NextRequest) {
-  const ip = request.ip ?? "127.0.0.1"
+  const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? request.headers.get("x-real-ip") ?? "127.0.0.1"
   const userAgent = request.headers.get("user-agent") || "unknown"
   const isIOS = /iPhone|iPad|iPod/.test(userAgent)
 
